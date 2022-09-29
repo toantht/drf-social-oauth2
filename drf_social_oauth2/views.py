@@ -62,8 +62,9 @@ class TokenView(CsrfExemptMixin, OAuthLibMixin, APIView):
         url, headers, body, status = self.create_token_response(request._request)
         response = Response(data=json.loads(body), status=status)
 
-        for k, v in headers.items():
-            response[k] = v
+        # NOTE: Header include request META can cause error
+        # for k, v in headers.items():
+        #     response[k] = v
         return response
 
 
@@ -92,8 +93,9 @@ class ConvertTokenView(CsrfExemptMixin, OAuthLibMixin, APIView):
         url, headers, body, status = self.create_token_response(request._request)
         response = Response(data=json.loads(body), status=status)
 
-        for k, v in headers.items():
-            response[k] = v
+        # NOTE: Header include request META can cause error
+        # for k, v in headers.items():
+        #     response[k] = v
         return response
 
 
@@ -119,8 +121,9 @@ class RevokeTokenView(CsrfExemptMixin, OAuthLibMixin, APIView):
             data=json.loads(body) if body else '', status=status if body else 204
         )
 
-        for k, v in headers.items():
-            response[k] = v
+        # NOTE: Header include request META can cause error
+        # for k, v in headers.items():
+        #     response[k] = v
         return response
 
 
